@@ -6,5 +6,10 @@ Express+MongoDb Assesment For RAD Module
    - Express.js
    - MongoDB
 
+## Using npm packages
+   - Nodemon (npm i nodemon)
+   - MongoDb (npm install mongodb)
+   - Mongoose (npm i mongoose)
+
 ## Copyright By
 Oshada Eranga(oshadaera68)
