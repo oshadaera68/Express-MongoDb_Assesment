@@ -1,9 +1,20 @@
 const express = require('express')
+
+// export Mongoose
+const mongoose = require('mongoose')
 const app = express()
 const port = 4000
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.use(express.json())
+
+// mongodb connction part
+const url = 'mongodb://localhost/fbclone'
+
+mongoose.connect(url, {useNewUrlParser:true})
+const con = mongoose.connection;
+
+con.on("open", ()=>{
+    console.log("mongo db successfully completed");
 })
 
 app.listen(port, () => {
