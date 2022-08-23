@@ -1,5 +1,4 @@
 const mongoose = require('mongoose')
-const { post } = require('../Routes/user')
 
 const postSchema = new mongoose.Schema({
     userId:{
