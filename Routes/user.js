@@ -24,7 +24,7 @@ router.post('/', async (req, res) => {
         gender: req.body.gender,
         dateOfBirth: req.body.dateOfBirth,
         password: req.body.password,
-        phoneNo: req.body.phoneNo,
+        phoneNumber: req.body.phoneNumber,
         email: req.body.email,
     })
 
@@ -66,5 +66,27 @@ router.put('/:id', async (req, res) => {
         res.send('Err: ' + err)
     }
 })
+
+//delete user
+router.delete('/:id', async (req, res) => {
+    try {
+        const userId = await User.findById(req.params.id)
+        const response = await userId.remove();
+        res.json(response)
+    } catch (err) {
+        res.send('Err: ' + err)
+    }
+})
+
+// get user login 
+router.get('/login', async (req, res) => {
+    try {
+        const user = await User.findByPasswordAndEmail(req.params.email, req.params.password)
+        res.json(user)
+    } catch (err) {
+        res.send('Err:' + err)
+    }
+})
+
 
 module.exports = router;

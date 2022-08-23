@@ -3,9 +3,10 @@ const express = require('express')
 // export Mongoose
 const mongoose = require('mongoose')
 const app = express()
-const port = 4000
+const port = 4001
 
-app.use(express.json())
+// routing part
+const user = require('./Routes/user')
 
 // mongodb connction part
 const url = 'mongodb://localhost/fbclone'
@@ -14,7 +15,14 @@ mongoose.connect(url, {useNewUrlParser:true})
 const con = mongoose.connection;
 
 con.on("open", ()=>{
-    console.log("mongo db successfully completed");
+    console.log("mongo db successfully connected");
+})
+
+app.use(express.json())
+app.use("/user", user)
+
+app.get('/',(req,res)=>{
+ res.send("hello");
 })
 
 app.listen(port, () => {
