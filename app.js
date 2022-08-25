@@ -7,6 +7,8 @@ const port = 4001
 
 // routing part
 const user = require('./Routes/user')
+const post = require('./Routes/post')
+
 
 // mongodb connction part
 const url = 'mongodb://localhost/fbclone'
@@ -20,6 +22,8 @@ con.on("open", ()=>{
 
 app.use(express.json())
 app.use("/user", user)
+app.use('/post',post)
+
 
 app.get('/',(req,res)=>{
  res.send("hello");

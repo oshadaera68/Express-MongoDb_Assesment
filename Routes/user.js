@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
         const user = await User.find()
         res.json(user)
     } catch (err) {
-        res.send('Err ' + err)
+        res.send('Err: ' + err)
     }
 })
 
